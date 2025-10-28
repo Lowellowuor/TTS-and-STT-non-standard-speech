@@ -1,4 +1,3 @@
-/* === Main Layout Structure with Fixed Header Support === */
 
 /* App Layout Structure */
 .app-layout {
@@ -23,10 +22,9 @@
   padding: var(--content-padding);
   position: relative;
   z-index: 1;
-  /* REMOVED: padding-top: calc(var(--space-md) + 80px); - No longer needed with fixed header */
 }
 
-/* Body padding to prevent content hiding behind fixed header */
+
 body {
   padding-top: var(--header-height);
   background: var(--bg-primary);

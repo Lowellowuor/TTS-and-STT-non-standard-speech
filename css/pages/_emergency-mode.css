@@ -167,43 +167,191 @@
   font-size: 0.875rem;
 }
 
-/* Quick Actions */
+/* Quick Actions - Enhanced Styling */
+.actions-card {
+  margin-bottom: var(--space-lg);
+}
+
 .quick-actions {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
-.action-btn {
+.quick-action-btn {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-md);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   color: var(--text-primary);
-  transition: all 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.action-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-1px);
+.quick-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
 }
 
-.action-btn:disabled {
+.quick-action-btn:hover::before {
+  left: 100%;
+}
+
+[data-theme="dark"] .quick-action-btn:hover:not(:disabled) {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.15);
+}
+
+[data-theme="light"] .quick-action-btn:hover:not(:disabled) {
+  background: rgba(0, 170, 170, 0.1);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 170, 170, 0.1);
+}
+
+.quick-action-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none !important;
 }
 
-.action-btn.primary {
+.quick-action-btn:disabled:hover {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: none;
+}
+
+/* Primary Quick Action Buttons */
+.quick-action-btn.primary {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none;
   color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
 }
 
-.action-btn.primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+[data-theme="dark"] .quick-action-btn.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #33FFFF, var(--accent-primary));
+  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .quick-action-btn.primary {
+  background: linear-gradient(135deg, var(--accent-primary), #008888);
+  box-shadow: 0 4px 20px rgba(0, 170, 170, 0.3);
+}
+
+[data-theme="light"] .quick-action-btn.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #008888, var(--accent-primary));
+  box-shadow: 0 6px 30px rgba(0, 170, 170, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Success State for Completed Actions */
+.quick-action-btn.success {
+  background: rgba(77, 255, 77, 0.1);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
+}
+
+[data-theme="dark"] .quick-action-btn.success:hover {
+  background: rgba(77, 255, 77, 0.2);
+  box-shadow: 0 8px 25px rgba(77, 255, 77, 0.2);
+}
+
+[data-theme="light"] .quick-action-btn.success {
+  background: rgba(0, 170, 0, 0.1);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
+}
+
+[data-theme="light"] .quick-action-btn.success:hover {
+  background: rgba(0, 170, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 170, 0, 0.15);
+}
+
+/* Button Content Styling */
+.quick-action-btn .btn-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.quick-action-btn .btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.quick-action-btn .btn-text {
+  flex: 1;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.quick-action-btn .btn-status {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* Specific Quick Action States */
+.quick-action-btn.location-shared {
+  background: rgba(77, 255, 77, 0.1);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
+}
+
+.quick-action-btn.contacts-notified {
+  background: rgba(77, 255, 77, 0.1);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
+}
+
+.quick-action-btn.medical-info {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* Progress Indicators */
+.quick-action-btn .progress-indicator {
+  width: 100%;
+  height: 3px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  margin-top: var(--space-sm);
+  overflow: hidden;
+}
+
+.quick-action-btn .progress-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.quick-action-btn.success .progress-fill {
+  background: var(--accent-success);
 }
 
 /* Emergency Contacts */
@@ -303,13 +451,6 @@
 .status-item.active .status-icon {
   background: var(--accent-success);
   color: white;
-}
-
-.status-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-  flex: 1;
 }
 
 .status-label {
@@ -589,4 +730,172 @@
 .resource-btn:hover {
   background: rgba(255, 255, 255, 0.05);
   transform: translateY(-1px);
+}
+
+/* Action Button Group */
+.action-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.action-button-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.action-button-row .quick-action-btn {
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+
+.action-button-row .quick-action-btn .btn-content {
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.action-button-row .quick-action-btn .btn-text {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Enhanced Card Styling for Quick Actions */
+.actions-card .card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.actions-card .card-title svg {
+  color: var(--accent-primary);
+}
+
+.actions-card .card-title span {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+/* Loading States */
+.quick-action-btn.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-action-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loadingShine 1.5s infinite;
+}
+
+@keyframes loadingShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Animation for button states */
+@keyframes quickActionPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.quick-action-btn.pulse {
+  animation: quickActionPulse 2s infinite;
+}
+
+/* Emergency-specific quick actions */
+.emergency-mode .quick-action-btn {
+  border-left: 3px solid var(--accent-error);
+}
+
+.emergency-mode .quick-action-btn.primary {
+  border-left: 3px solid white;
+}
+
+.emergency-mode .quick-action-btn.success {
+  border-left: 3px solid var(--accent-success);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quick-actions {
+    gap: var(--space-sm);
+  }
+  
+  .quick-action-btn {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .quick-action-btn .btn-content {
+    gap: var(--space-sm);
+  }
+  
+  .quick-action-btn .btn-text {
+    font-size: 0.8rem;
+  }
+  
+  .action-button-row {
+    flex-direction: column;
+  }
+  
+  .emergency-types {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resources-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+  
+  .emergency-status {
+    justify-content: center;
+  }
+}
+
+/* Emergency Glow Animation */
+@keyframes emergencyGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 77, 77, 0.8);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }

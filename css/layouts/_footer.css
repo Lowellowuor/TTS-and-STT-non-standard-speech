@@ -2,9 +2,9 @@
 footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--glass-border);
-  margin-top: auto; /* This pushes footer to bottom */
+  margin-top: auto; 
   position: relative;
-  z-index: 10; /* Ensure footer stays above content */
+  z-index: 10; 
 }
 
 .footer-main {
