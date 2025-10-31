@@ -1,0 +1,386 @@
+/* Responsive Design */
+@media (max-width: 1200px) {
+  /* Header Responsive */
+  .secondary-nav {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  
+  .status-group, .input-mode-section, .quick-actions-section {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  /* Grid Responsive */
+  .comms-grid, .amplifier-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .comms-grid .sidebar-right, 
+  .amplifier-grid .sidebar-right {
+    display: none;
+  }
+
+  .predictor-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .predictor-grid .sidebar-right {
+    display: none;
+  }
+
+  .symbol-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .symbol-grid .sidebar-right {
+    display: none;
+  }
+
+  .voice-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .voice-grid .sidebar-right {
+    display: none;
+  }
+
+  .emergency-content {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .emergency-content .emergency-right {
+    display: none;
+  }
+
+  /* Footer Responsive */
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .links-sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .newsletter-section {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .links-sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .newsletter-section {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header Mobile */
+  .primary-nav {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .solution-navigation {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .control-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .system-status {
+    display: none;
+  }
+
+  /* Grid Mobile */
+  .comms-grid, .amplifier-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .comms-grid .sidebar-left, 
+  .amplifier-grid .sidebar-left {
+    display: none;
+  }
+
+  .predictor-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .predictor-grid .sidebar-left {
+    display: none;
+  }
+
+  .symbol-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .symbol-grid .sidebar-left {
+    display: none;
+  }
+
+  .voice-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .voice-grid .sidebar-left {
+    display: none;
+  }
+
+  .emergency-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .emergency-content .emergency-left {
+    display: none;
+  }
+
+  /* Component Mobile */
+  .input-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .action-group {
+    justify-content: center;
+  }
+
+  .example-comparison {
+    flex-direction: column;
+  }
+
+  .example-arrow {
+    transform: rotate(90deg);
+    padding: var(--space-md) 0;
+  }
+
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .predictions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs-navigation {
+    flex-direction: column;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Emergency Mode Mobile */
+  .header-content {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .emergency-status {
+    justify-content: center;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emergency-types {
+    grid-template-columns: 1fr;
+  }
+
+  .location-actions {
+    flex-direction: column;
+  }
+
+  .medical-actions {
+    flex-direction: column;
+  }
+
+  .resources-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer Mobile */
+  .footer-main {
+    padding: 2rem 1rem;
+  }
+
+  .links-sections {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .newsletter-btn {
+    width: 100%;
+  }
+
+  .brand-logo {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .brand-text {
+    align-items: center;
+  }
+
+  .contact-info {
+    align-items: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  /* Symbol Board Mobile */
+  .symbols-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .recent-symbols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .newsletter-section {
+    padding: var(--space-md);
+  }
+
+  .trust-badges {
+    align-items: center;
+  }
+
+  .bottom-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .professional-header {
+    margin: 0.5rem;
+  }
+
+  .primary-nav, .secondary-nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .solution-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .status-card {
+    min-width: auto;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .professional-header,
+  .sidebar-left,
+  .sidebar-right,
+  .footer {
+    display: none;
+  }
+  
+  .comms-grid,
+  .amplifier-grid,
+  .predictor-grid,
+  .symbol-grid,
+  .voice-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .daily-communicator-page,
+  .content-amplifier-page,
+  .smart-predictor-page,
+  .symbol-board-page,
+  .voice-personalizer-page,
+  .emergency-mode-page {
+    padding: 0;
+    background: white;
+  }
+  
+  .glass-card {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+  }
+  
+  .glass-card {
+    border-width: 2px;
+  }
+}
+
+/* Dark mode auto-detection */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Dark theme variables will be applied by default */
+  }
+}
