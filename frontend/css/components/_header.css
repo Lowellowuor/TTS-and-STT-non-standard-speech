@@ -1,0 +1,691 @@
+/* --- CSS Variable Setup for Theme Simulation (Tailwind-like) --- */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937; /* Gray 900 */
+  --primary-color: #3b82f6; /* Blue 500 */
+  --primary-color-rgb: 59, 130, 246;
+  --accent-color: #10b981; /* Emerald 500 */
+  --border-color: #e5e7eb; /* Gray 200 */
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --error-color: #ef4444; /* Red 500 */
+  --header-height: 70px; /* NEW: Define header height variable */
+}
+
+/* Simple dark mode definition */
+.dark {
+  --bg-color: #1f2937;
+  --text-color: #f3f4f6; /* Gray 100 */
+  --primary-color: #60a5fa; /* Blue 400 */
+  --primary-color-rgb: 96, 165, 250;
+  --accent-color: #34d399; /* Emerald 400 */
+  --border-color: #374151; /* Gray 700 */
+  --shadow-color: rgba(255, 255, 255, 0.05);
+  --error-color: #f87171; /* Red 400 */
+}
+
+/* --- CRITICAL: Body padding to prevent content hiding behind fixed header --- */
+body {
+  padding-top: var(--header-height); /* Use variable for consistency */
+}
+
+/* --- 1. Main Header & FIXED Position - UPDATED --- */
+
+.professional-header {
+  /* CRITICAL: Fixed positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: var(--header-height);
+  
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.primary-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  min-height: 100%;
+  box-sizing: border-box;
+}
+/* NEW: Content wrapper class to add below header */
+.main-content-wrapper {
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
+    z-index: 1; /* Ensure content stays below header */
+}
+
+/* --- 2. Brand Section --- */
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+.logo {
+    color: var(--primary-color);
+}
+.brand-name {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700; /* font-bold */
+    color: var(--text-color);
+}
+/* Hide brand name on small devices */
+@media (max-width: 640px) {
+    .brand-text {
+        display: none;
+    }
+}
+
+/* --- 3. Main Navigation & Dropdowns - UPDATED for fixed header --- */
+.main-navigation {
+    display: flex;
+    gap: 0.5rem; /* gap-2 */
+    align-items: center;
+    flex-grow: 1; /* Allows navigation to take up central space */
+    justify-content: center;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    color: var(--text-color);
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    white-space: nowrap;
+    border: none;
+    background: transparent;
+}
+.nav-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.3);
+}
+.nav-item.active svg {
+    color: white;
+}
+/* Hide nav text on tablet/mobile */
+@media (max-width: 768px) {
+    .nav-text {
+        display: none;
+    }
+    .nav-item {
+        padding: 0.5rem;
+    }
+}
+
+.nav-dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    min-width: 18rem; 
+    background-color: var(--bg-color);
+    border-radius: 0.75rem; 
+    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    z-index: 1001; /* Higher than header z-index */
+}
+/* NEW: Ensure dropdowns are visible with fixed header */
+.dropdown-menu {
+    max-height: 70vh; /* Limit height */
+    overflow-y: auto; /* Add scroll if needed */
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+.dropdown-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+.dropdown-item-name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+.dropdown-item-desc {
+    font-size: 0.75rem; 
+    color: #6b7280; 
+}
+.dropdown-item.active {
+    background-color: rgba(var(--primary-color-rgb), 0.2);
+}
+
+/* --- 4. Control Section & Status Indicators --- */
+.control-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+.status-indicators {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+@media (max-width: 768px) {
+    .status-indicators {
+        gap: 0.5rem;
+    }
+}
+
+/* Confidence Dots */
+.confidence-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 5px currentColor;
+    animation: pulse 2s infinite;
+}
+.confidence-excellent { background-color: var(--accent-color); }
+.confidence-good { background-color: #f59e0b; } /* amber-500 */
+.confidence-poor { background-color: var(--error-color); }
+
+/* STT Status Badge */
+.stt-status {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+/* Custom STT status colors */
+.status-listening { 
+  background-color: #3b82f633; /* blue-500 with opacity */
+  color: #3b82f6; 
+}
+.status-success { 
+  background-color: #10b98133; /* emerald-500 with opacity */
+  color: #10b981; 
+}
+.status-error { 
+  background-color: #ef444433; /* red-500 with opacity */
+  color: #ef4444; 
+}
+.status-ready { 
+  background-color: #6b728033; /* gray-500 with opacity */
+  color: #6b7280; 
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+    display: flex;
+    border: none;
+    cursor: pointer;
+}
+.action-btn:hover {
+    background-color: var(--border-color);
+}
+.action-btn.emergency {
+    /* REMOVED 'color: var(--error-color);' HERE */
+    display: flex; /* Ensure it's displayed */
+}
+/* ADDED: Color for the emergency icon */
+.action-btn.emergency svg {
+    color: var(--error-color);
+}
+
+@media (max-width: 768px) {
+    .stt-indicator span,
+    .confidence-indicator {
+        display: none;
+    }
+}
+
+/* --- 5. User Profile Dropdown - UPDATED for fixed header --- */
+.user-profile {
+    position: relative;
+    margin-left: 0.5rem;
+}
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    background-color: var(--border-color);
+    cursor: pointer;
+    border: none;
+    color: var(--text-color);
+}
+.avatar {
+    background-color: var(--primary-color);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 14rem; 
+    background-color: var(--bg-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    z-index: 1001; /* Higher than header z-index */
+    max-height: 80vh; /* NEW: Prevent overflow */
+    overflow-y: auto; /* NEW: Add scroll if needed */
+}
+.menu-section {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.menu-section:last-child {
+    border-bottom: none;
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    text-align: left;
+    color: var(--text-color);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+.menu-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+.menu-item.sign-out {
+    color: var(--error-color);
+    justify-content: center;
+}
+.menu-item.sign-out:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* --- NEW: 5.5 Light/Dark Mode Dropdown --- */
+.theme-toggle-dropdown {
+    position: relative;
+    margin-right: 0.5rem; /* Add spacing on the left of the button */
+}
+
+/* Use the existing .profile-menu styling for the theme dropdown */
+.theme-menu {
+    position: absolute;
+    top: 100%;
+    right: 0; /* Align to the right of the button */
+    margin-top: 0.5rem;
+    width: 12rem; /* Adjusted width for a smaller menu */
+    background-color: var(--bg-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    z-index: 1001;
+    /* Initially hidden. JavaScript will toggle a 'visible' class. */
+    display: none; 
+}
+
+/* Class to show the theme menu (to be added by JS) */
+.theme-menu.visible {
+    display: block;
+}
+
+.theme-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    text-align: left;
+    color: var(--text-color);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.theme-menu-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.theme-menu-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Styling for the icon button (like action-btn but with more presence) */
+.theme-toggle-btn {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    margin-right: -0.5rem; /* Optical adjustment */
+}
+.theme-toggle-btn:hover {
+    background-color: var(--border-color);
+}
+/* Hide the sun icon when in dark mode */
+.dark .theme-toggle-btn .sun-icon {
+    display: none;
+}
+/* Show the moon icon when NOT in dark mode (default is hidden) */
+.theme-toggle-btn .moon-icon {
+    display: none;
+}
+/* Show the moon icon only when in dark mode */
+.dark .theme-toggle-btn .moon-icon {
+    display: block;
+}
+
+/* --- 6. TTS Playback Bar - UPDATED for fixed header --- */
+.tts-playback-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.875rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 48px;
+    /* NEW: Position below fixed header */
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    z-index: 999; /* Below header but above content */
+}
+/* NEW: Adjust body padding when TTS bar is visible */
+body.has-tts-bar {
+    padding-top: calc(var(--header-height) + 48px);
+}
+.tts-control {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 0.35rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+}
+.tts-control:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.tts-text-scroll {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+.tts-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.tts-progress-fill {
+    height: 100%;
+    background-color: white;
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+/* --- 7. Emergency State & Animations - UPDATED for fixed header --- */
+.emergency-active {
+  background-color: var(--error-color); 
+  color: white;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.7);
+}
+/* Ensure text colors change to white in emergency mode */
+.emergency-active .brand-name,
+.emergency-active .logo,
+.emergency-active .nav-item {
+    color: white;
+}
+.emergency-active .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+
+/* Mic Pulse Animation for 'listening' status */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pulse-animation {
+  animation: pulse 1s infinite;
+}
+
+/* Emergency Alert Box Animation */
+@keyframes alert-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.emergency-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000; /* Very high to overlay everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.emergency-alert {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 28rem;
+    animation: alert-pulse 1.5s infinite alternate; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+.emergency-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.emergency-icon {
+    font-size: 3rem;
+    line-height: 1;
+    /* Added color to make it visible */
+    color: var(--error-color); 
+}
+.emergency-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--error-color);
+    margin: 0 0 0.5rem 0;
+}
+.emergency-content p {
+    margin: 0;
+    color: #6b7280;
+}
+.emergency-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+.emergency-action {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+.emergency-action.primary {
+    background-color: var(--error-color);
+    color: white;
+}
+.emergency-action.primary:hover {
+    background-color: #dc2626; /* darker red */
+    transform: translateY(-1px);
+}
+.emergency-action.secondary {
+    background-color: #f3f4f6; 
+    color: #4b5563; 
+}
+.emergency-action.secondary:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+/* --- 8. Responsive Adjustments for Fixed Header - UPDATED --- */
+@media (max-width: 640px) {
+    .primary-nav {
+        padding: 0.75rem 1rem;
+    }
+    
+    .main-navigation {
+        gap: 0.25rem;
+    }
+    
+    .control-section {
+        gap: 0.5rem;
+    }
+    
+    /* Adjust body padding for mobile */
+    body {
+        padding-top: 60px;
+    }
+    
+    :root {
+        --header-height: 60px; /* Smaller header on mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ensure dropdowns don't overflow on mobile */
+    .dropdown-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        width: auto;
+        margin: 0;
+        border-radius: 0;
+        max-height: calc(100vh - var(--header-height));
+    }
+    
+    .profile-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        width: auto;
+        margin: 0;
+        border-radius: 0;
+        max-height: calc(100vh - var(--header-height));
+    }
+    
+    /* Ensure the new theme menu also adapts on mobile */
+    .theme-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        width: auto;
+        margin: 0;
+        border-radius: 0;
+        max-height: calc(100vh - var(--header-height));
+    }
+}
+
+/* --- 9. Scrollbar Styling (optional) --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* --- 10. NEW: Utility classes for content management --- */
+.content-below-header {
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+.page-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Ensure modals and overlays appear above fixed header */
+.modal-overlay,
+.overlay-component {
+    z-index: 2000 !important;
+}

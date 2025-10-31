@@ -1,0 +1,16 @@
+ython / Virtual Environment
+
+venv/
+.venv/
+pycache/
+
+Byte-compiled / optimized files
+
+*.py[cod]
+*$py.class
+
+Temporary files
+
+*.tmp
+*.bak
+*.swp

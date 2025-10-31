@@ -1,0 +1,352 @@
+/* Modal Overlays */
+.training-modal-overlay,
+.confirmation-overlay,
+.emergency-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.confirmation-overlay {
+  animation: emergencyPulse 0.5s ease-in-out;
+}
+
+/* Modals */
+.training-modal,
+.confirmation-modal {
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease-out;
+}
+
+.confirmation-modal {
+  animation: slideIn 0.3s ease-out;
+}
+
+.emergency-alert {
+  background: linear-gradient(135deg, var(--accent-error), #dc2626);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  color: white;
+  max-width: 400px;
+  width: 90%;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Modal Headers */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.modal-header.emergency {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  color: var(--accent-error);
+}
+
+.modal-header.emergency h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+/* Close Buttons */
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* Training Modal Content */
+.training-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--glass-bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.training-content {
+  text-align: center;
+}
+
+.training-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 2rem 1rem;
+}
+
+.phase-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-md);
+}
+
+.phase-icon.recording {
+  animation: pulse 1s infinite;
+}
+
+.phase-icon.processing {
+  animation: spin 2s linear infinite;
+}
+
+.phase-icon.completed {
+  color: var(--accent-success);
+}
+
+.training-phase h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.training-phase p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.recording-visualizer {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 80px;
+  padding: var(--space-md);
+}
+
+.visualizer-bar {
+  width: 6px;
+  background: var(--accent-primary);
+  border-radius: 3px;
+  animation: visualizer 1s ease-in-out infinite;
+}
+
+.current-phrase {
+  padding: var(--space-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.processing-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--glass-border);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.training-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 300px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+}
+
+.result-value {
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+/* Confirmation Modal */
+.confirmation-content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.countdown-display {
+  margin-bottom: 2rem;
+}
+
+.countdown-circle {
+  width: 100px;
+  height: 100px;
+  border: 4px solid var(--accent-error);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  animation: countdownPulse 1s infinite;
+}
+
+.countdown-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-error);
+}
+
+.emergency-details {
+  text-align: left;
+}
+
+.emergency-details h4 {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0;
+}
+
+.action-list li {
+  padding: var(--space-sm) 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.cancel-btn {
+  flex: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.activate-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent-error), #dc2626);
+}
+
+.activate-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Emergency Alert */
+.emergency-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.emergency-icon {
+  font-size: 3rem;
+  animation: pulse 1s infinite;
+}
+
+.emergency-title h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.emergency-title p {
+  opacity: 0.9;
+  font-size: 0.875rem;
+}
+
+.emergency-actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.emergency-action {
+  flex: 1;
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.emergency-action.primary {
+  background: white;
+  color: var(--accent-error);
+}
+
+.emergency-action.primary:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+}
+
+.emergency-action.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.emergency-action.secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,75 @@
+:root {
+  /* Color System */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #666666;
+  
+  /* Accent Colors */
+  --accent-primary: #007AFF;
+  --accent-secondary: #5856D6;
+  --accent-success: #30D158;
+  --accent-warning: #FFD60A;
+  --accent-error: #FF453A;
+  
+  /* Glass Morphism */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* === ADDED: Layout Variables for Fixed Header === */
+  --header-height: 70px;
+  --footer-height: 60px;
+  --content-padding: 20px;
+  
+  /* Z-index layers */
+  --z-header: 1000;
+  --z-dropdown: 1001;
+  --z-modal: 2000;
+  --z-particle: -1;
+}
+
+/* Light theme overrides */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-tertiary: #a0a0a0;
+  
+  /* Glass Morphism for Light Mode */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive header heights */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+    --content-padding: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 56px;
+    --content-padding: 12px;
+  }
+}

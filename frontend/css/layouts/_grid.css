@@ -1,0 +1,275 @@
+
+/* App Layout Structure */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+/* CRITICAL: Main content wrapper for fixed header */
+.main-content-wrapper {
+  margin-top: var(--header-height);
+  flex: 1;
+  position: relative;
+  z-index: var(--z-header) - 1;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  background: var(--bg-primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--content-padding);
+  position: relative;
+  z-index: 1;
+}
+
+
+body {
+  padding-top: var(--header-height);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Particle background positioning */
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-particle);
+}
+
+/* Daily Communicator Grid */
+.comms-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Content Amplifier Grid */
+.amplifier-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 320px;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Smart Predictor Grid */
+.predictor-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 320px;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Symbol Board Grid */
+.symbol-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Voice Personalizer Grid */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Emergency Mode Grid */
+.emergency-content {
+  display: grid;
+  grid-template-columns: 300px 1fr 320px;
+  gap: var(--space-lg);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+}
+
+/* Page Container Styles */
+.daily-communicator-page,
+.content-amplifier-page,
+.smart-predictor-page,
+.symbol-board-page,
+.voice-personalizer-page,
+.emergency-mode-page {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px);
+  padding-bottom: var(--space-xl);
+  position: relative;
+}
+
+/* Sidebar Layouts */
+.sidebar-left, 
+.sidebar-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 2;
+}
+
+/* Main Content Areas */
+.main-comms-area,
+.main-amplifier-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1200px) {
+  .comms-grid,
+  .amplifier-grid,
+  .predictor-grid,
+  .symbol-grid,
+  .voice-grid {
+    grid-template-columns: 280px 1fr;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 30px);
+  }
+  
+  .emergency-content {
+    grid-template-columns: 280px 1fr;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 30px);
+  }
+  
+  /* Hide right sidebar on medium screens */
+  .comms-grid .sidebar-right,
+  .amplifier-grid .sidebar-right,
+  .predictor-grid .sidebar-right,
+  .symbol-grid .sidebar-right,
+  .voice-grid .sidebar-right,
+  .emergency-content .sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .comms-grid,
+  .amplifier-grid,
+  .predictor-grid,
+  .symbol-grid,
+  .voice-grid,
+  .emergency-content {
+    grid-template-columns: 1fr;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 20px);
+    gap: var(--space-md);
+  }
+  
+  /* Hide left sidebar on mobile */
+  .comms-grid .sidebar-left,
+  .amplifier-grid .sidebar-left,
+  .predictor-grid .sidebar-left,
+  .symbol-grid .sidebar-left,
+  .voice-grid .sidebar-left,
+  .emergency-content .sidebar-left {
+    display: none;
+  }
+  
+  .main-content {
+    padding: var(--space-sm);
+  }
+  
+  .main-content-wrapper {
+    margin-top: var(--header-height);
+  }
+}
+
+@media (max-width: 480px) {
+  .comms-grid,
+  .amplifier-grid,
+  .predictor-grid,
+  .symbol-grid,
+  .voice-grid,
+  .emergency-content {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 10px);
+    gap: var(--space-sm);
+  }
+  
+  .daily-communicator-page,
+  .content-amplifier-page,
+  .smart-predictor-page,
+  .symbol-board-page,
+  .voice-personalizer-page,
+  .emergency-mode-page {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 10px);
+    padding-bottom: var(--space-lg);
+  }
+}
+
+/* Overflow handling for grid content */
+.comms-grid,
+.amplifier-grid,
+.predictor-grid,
+.symbol-grid,
+.voice-grid,
+.emergency-content {
+  overflow: visible;
+}
+
+.sidebar-left,
+.sidebar-right {
+  overflow-y: auto;
+  max-height: calc(100vh - var(--header-height) - 100px);
+}
+
+/* Ensure proper stacking context */
+.app-layout {
+  position: relative;
+  z-index: 0;
+}
+
+.main-content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer spacing adjustment */
+.footer {
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+  background: var(--bg-secondary);
+}
+
+/* Print styles */
+@media print {
+  .comms-grid,
+  .amplifier-grid,
+  .predictor-grid,
+  .symbol-grid,
+  .voice-grid,
+  .emergency-content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    height: auto;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+  }
+  
+  /* Remove fixed header spacing for print */
+  body {
+    padding-top: 0;
+  }
+  
+  .main-content-wrapper {
+    margin-top: 0;
+  }
+}

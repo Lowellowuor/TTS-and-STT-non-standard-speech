@@ -1,0 +1,36 @@
+# Web Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+# Data Validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+# Machine Learning
+torch==2.1.0
+torchaudio==2.1.0
+transformers==4.35.0
+librosa==0.10.1
+soundfile==0.12.1
+numpy==1.24.3
+scipy==1.11.3
+# Audio Processing
+pydub==0.25.1
+webrtcvad==2.0.10
+# Utilities
+python-dotenv==1.0.0
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+# Database (Optional)
+sqlalchemy==2.0.23
+alembic==1.12.1
+psycopg2-binary==2.9.9
+# Evaluation
+jiwer==2.5.1
+rapidfuzz==3.5.2
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# Email/SMS (For emergency features)
+twilio==8.10.0
+python-http-client==3.3.7

@@ -1,0 +1,8 @@
+﻿{
+    "name": "Friendly Voice",
+    "language": "en",
+    "gender": "female", 
+    "speaking_rate": 1.0,
+    "pitch": 0.0,
+    "description": "Warm and friendly voice for general use"
+}

@@ -1,0 +1,441 @@
+/* Clinical Cybernetic Dark Theme - TTS/STT Application */
+/* Core Monochromatic & Accent Definitions (Teal = #00FFFF) */
+[data-theme="dark"] {
+  /* MONOCHROMATIC BASE */
+  --bg-primary: #0A0A0A; /* Near-Black, deepest background */
+  --bg-secondary: #1B1B1B; /* Deep Charcoal, for elevated surfaces */
+  --text-primary: #F0F0F0; /* Off-White for high contrast */
+  --divider-color: #333333; /* Dark Steel for borders */
+
+  /* HIGH-CONTRAST ACCENT (Quantum Teal/Cyan) */
+  --accent-primary: #00FFFF;
+  --accent-secondary: #00FFFF; /* Consolidate accents to Teal */
+  --accent-tertiary: #00FFFF; /* Consolidate accents to Teal */
+
+  /* SYSTEM STATUS COLORS (Only use these for status, not interactivity) */
+  --accent-success: #4DFF4D; /* Clinical Bright Green */
+  --accent-warning: #FFFF4D; /* Clinical Bright Yellow */
+  --accent-error: #FF4D4D; /* Clinical Bright Red */
+
+  /* Glass effects based only on the Teal accent */
+  --glass-bg: rgba(0, 255, 255, 0.1);
+  --glass-border: rgba(0, 255, 255, 0.3);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(30px) saturate(180%);
+  
+  /* Animation shadows updated to Teal */
+  --listening-pulse: 0 0 0 0 rgba(0, 255, 255, 0.6);
+  --speaking-glow: 0 0 25px rgba(0, 255, 255, 0.5);
+  --processing-glow: 0 0 0 0 rgba(0, 255, 255, 0.6);
+}
+
+/* Base container styling */
+[data-theme="dark"] {
+  /* Simplified background gradient using only the monochromatic base */
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ============ CRITICAL FIXED HEADER POSITIONING ============ */
+
+/* Professional header with Teal accent line - FIXED POSITIONING */
+[data-theme="dark"] .professional-header {
+  /* CRITICAL: Fixed positioning for dark theme */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: var(--header-height, 70px);
+  
+  /* Dark, saturated background for a cockpit feel */
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .professional-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  /* Pure Teal accent line for clinical precision */
+  background: linear-gradient(90deg,
+    transparent,
+    var(--accent-primary),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+/* Primary Navigation Bar */
+[data-theme="dark"] .primary-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* ============ ENSURE BODY PADDING FOR FIXED HEADER ============ */
+
+/* Add this to your main CSS file or base styles */
+body {
+  padding-top: var(--header-height, 70px);
+}
+
+/* Main content wrapper for fixed header spacing */
+.main-content-wrapper {
+  margin-top: var(--header-height, 70px);
+  min-height: calc(100vh - var(--header-height, 70px));
+  position: relative;
+  z-index: 1;
+}
+
+/* ============ REST OF YOUR DARK THEME STYLES ============ */
+
+/* Enhanced glass cards with Teal borders */
+[data-theme="dark"] .glass-card {
+  /* Simplified gradient, based only on background and teal transparency */
+  background: linear-gradient(135deg,
+    rgba(0, 255, 255, 0.08),
+    rgba(27, 27, 27, 0.9) /* Mix with deep charcoal for less transparency */
+  );
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Reduced white shine */
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Monochromatic shine/reflection effect */
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.05),
+    transparent 50%,
+    rgba(0, 255, 255, 0.02) 
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* TTS/STT Specific Components */
+[data-theme="dark"] .voice-waveform {
+  /* Clean Teal-based background */
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .voice-waveform::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  /* White shine over waveform */
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  pointer-events: none;
+  animation: waveform-shine 3s infinite;
+}
+
+[data-theme="dark"] .listening-indicator {
+  /* Now pure Teal */
+  background: var(--accent-primary);
+  border: none;
+  box-shadow: var(--listening-pulse);
+  animation: neon-pulse 2s infinite;
+  color: var(--bg-primary); /* Dark text on bright Teal */
+  font-weight: 600;
+}
+
+[data-theme="dark"] .speaking-indicator {
+  /* Now pure Teal */
+  background: var(--accent-primary);
+  border: none;
+  box-shadow: var(--speaking-glow);
+  animation: neon-glow 3s ease-in-out infinite;
+  color: var(--bg-primary); /* Dark text on bright Teal */
+  font-weight: 600;
+}
+
+[data-theme="dark"] .processing-indicator {
+  /* Now pure Teal */
+  background: var(--accent-primary);
+  border: none;
+  box-shadow: var(--processing-glow);
+  animation: processing-spin 1.5s linear infinite;
+}
+
+/* Enhanced focus states for accessibility */
+[data-theme="dark"] :focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+/* Glass buttons with Teal effects */
+[data-theme="dark"] .glass-button {
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: var(--text-primary);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .glass-button:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3); /* Teal glow */
+}
+
+[data-theme="dark"] .glass-button:active {
+  transform: translateY(0);
+  background: rgba(0, 255, 255, 0.25);
+}
+
+/* Primary action buttons */
+[data-theme="dark"] .primary-action {
+  /* Solid Teal primary color for maximum contrast */
+  background: var(--accent-primary); 
+  border: none;
+  color: var(--bg-primary); /* Dark text on bright background */
+  font-weight: 600;
+  box-shadow: 
+    0 4px 25px rgba(0, 255, 255, 0.4), /* Teal shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 14px;
+}
+
+[data-theme="dark"] .primary-action:hover {
+  background: #33FFFF; /* Slightly brighter Teal on hover */
+  box-shadow: 
+    0 6px 35px rgba(0, 255, 255, 0.6), /* Stronger Teal shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+[data-theme="dark"] .primary-action:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 2px 20px rgba(0, 255, 255, 0.5), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Voice level meter */
+[data-theme="dark"] .voice-level {
+  /* Pure Teal gradient */
+  background: linear-gradient(180deg,
+    rgba(0, 255, 255, 0.5),
+    var(--accent-primary)
+  );
+  animation: voice-level-bounce 0.8s ease-in-out infinite alternate;
+  border-radius: 4px;
+}
+
+/* Audio visualization bars */
+[data-theme="dark"] .audio-bar {
+  /* Pure Teal gradient */
+  background: linear-gradient(180deg,
+    rgba(0, 255, 255, 0.5),
+    var(--accent-primary)
+  );
+  animation: audio-bar-dance 0.6s ease-in-out infinite alternate;
+  border-radius: 3px;
+}
+
+/* Status indicators (retained HUE, but clinical bright values) */
+[data-theme="dark"] .status-online {
+  background: var(--accent-success);
+  box-shadow: 0 0 20px rgba(77, 255, 77, 0.4);
+}
+
+[data-theme="dark"] .status-processing {
+  background: var(--accent-warning);
+  box-shadow: 0 0 20px rgba(255, 255, 77, 0.4);
+  animation: processing-pulse 2s infinite;
+}
+
+[data-theme="dark"] .status-error {
+  background: var(--accent-error);
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+}
+
+/* Enhanced scrollbars */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  /* Pure Teal thumb */
+  background: var(--accent-primary);
+  border-radius: 8px;
+  border: 2px solid rgba(10, 10, 10, 0.8);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #33FFFF;
+}
+
+/* Firefox scrollbar */
+[data-theme="dark"] {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) rgba(10, 10, 10, 0.8);
+}
+
+/* ============ ANIMATIONS ============ */
+
+@keyframes neon-pulse {
+  0% {
+    /* Teal pulse */
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.6);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 255, 255, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.7);
+  }
+}
+
+@keyframes processing-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes voice-level-bounce {
+  from {
+    transform: scaleY(0.3);
+    opacity: 0.7;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes audio-bar-dance {
+  from {
+    transform: scaleY(0.4);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes waveform-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes processing-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  [data-theme="dark"] {
+    --glass-blur: blur(20px) saturate(180%);
+  }
+  
+  [data-theme="dark"] .glass-card {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  
+  [data-theme="dark"] .professional-header::after {
+    left: 10%;
+    right: 10%;
+  }
+  
+  /* Adjust header height for mobile */
+  body {
+    padding-top: var(--header-height, 60px);
+  }
+  
+  .main-content-wrapper {
+    margin-top: var(--header-height, 60px);
+    min-height: calc(100vh - var(--header-height, 60px));
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="dark"] {
+    --glass-blur: blur(15px) saturate(160%);
+  }
+  
+  [data-theme="dark"] .glass-button,
+  [data-theme="dark"] .primary-action {
+    transition: none;
+    transform: none;
+  }
+  
+  .listening-indicator,
+  .speaking-indicator,
+  .voice-level,
+  .audio-bar,
+  .status-processing {
+    animation: none;
+  }
+}

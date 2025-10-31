@@ -1,0 +1,50 @@
+{
+  "phonemes": {
+    "vowels": ["a", "e", "i", "o", "u", "ɑ", "ɛ", "ɪ", "ɔ", "ʊ", "ʌ", "ə"],
+    "consonants": ["p", "b", "t", "d", "k", "g", "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "h", "m", "n", "ŋ", "l", "r", "w", "j"]
+  },
+  "common_errors": {
+    "helb": "help",
+    "accidend": "accident",
+    "dangor": "danger",
+    "pleese": "please",
+    "thanc": "thank",
+    "wadder": "water",
+    "birfday": "birthday",
+    "pasketti": "spaghetti",
+    "aminal": "animal",
+    "libary": "library"
+  },
+  "emergency_keywords": [
+    "help",
+    "emergency",
+    "accident",
+    "danger",
+    "urgent",
+    "pain",
+    "hurt",
+    "ambulance",
+    "police",
+    "fire",
+    "bleeding",
+    "broken",
+    "unconscious",
+    "choking"
+  ],
+  "enhancement_patterns": {
+    "simplify_complex": {
+      "emergency": "help needed",
+      "accident": "crash",
+      "difficulty": "trouble",
+      "assistance": "help",
+      "approximately": "about"
+    },
+    "expand_abbreviations": {
+      "dr.": "doctor",
+      "st.": "street",
+      "ave.": "avenue",
+      "mr.": "mister",
+      "mrs.": "misses"
+    }
+  }
+}
